@@ -21,7 +21,7 @@ public class HitOld : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
          if (other.gameObject.tag == "OldObject") {
-             score++;
+             score--;
              PlayParticle();
           Destroy(other.gameObject); 
          }
