@@ -4,24 +4,49 @@ using UnityEngine;
 using UnityEngine.UI;
 public class HitOld : MonoBehaviour
 {
-    public int score;
+    public int CountOldObject;
      public GameObject Particle;
-     public Text textscore;
+     public Text UICountOldObject;
+     private Vector3 MakeParticle;
+     public GameObject Wayone;
+     public GameObject Waytwo;
+     public GameObject Waythree;
     // Start is called before the first frame update
     void Start()
     {
+      
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        textscore.text=score.ToString();
+        UICountOldObject.text=CountOldObject.ToString();
+        if(CountOldObject==3){
+            Wayone.SetActive(true);
+            Waytwo.SetActive(false);
+            Waythree.SetActive(false);
+        }
+         if(CountOldObject==2){
+            Wayone.SetActive(false);
+            Waytwo.SetActive(true);
+            Waythree.SetActive(false);
+        }
+          if(CountOldObject==1){
+            Wayone.SetActive(false);
+            Waytwo.SetActive(false);
+            Waythree.SetActive(true);
+        }
+         if(CountOldObject==0){
+            Wayone.SetActive(false);
+            Waytwo.SetActive(false);
+            Waythree.SetActive(false);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
          if (other.gameObject.tag == "OldObject") {
-             score--;
+             CountOldObject--;
              PlayParticle();
           Destroy(other.gameObject); 
          }
